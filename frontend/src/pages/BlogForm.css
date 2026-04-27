@@ -1,0 +1,50 @@
+.blog-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.blog-form-container h1 {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-size: 2rem;
+}
+
+.blog-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-help {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.813rem;
+  color: var(--text-light);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .blog-form-container {
+    padding: 1.5rem;
+  }
+  
+  .blog-form-container h1 {
+    font-size: 1.5rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+}
