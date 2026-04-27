@@ -2,8 +2,6 @@
 
 A full-stack blog application built with MongoDB, Express, React, and Node.js (MERN stack). Features include user authentication with JWT, full CRUD operations for blog posts, and a modern, responsive UI.
 
-
-
 ## 🚀 Features
 
 ### Backend Features
