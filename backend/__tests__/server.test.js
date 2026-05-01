@@ -32,7 +32,7 @@ describe('Server Health Check', () => {
   });
 
   it('should return 404 for non-existent routes', async () => {
-    const response = await request(app)
+    await request(app)
       .get('/api/nonexistent')
       .expect(404);
   });
