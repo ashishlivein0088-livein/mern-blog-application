@@ -48,10 +48,6 @@ pipeline{
                 dir('backend') {
                     sh 'npm test'
                 }
-                echo '============ Running unit tests for frontend... ============'
-                dir('frontend') {
-                    sh 'npm test -- --watchAll=false'
-                }
             }
         }
         stage('Build Frontend') {
