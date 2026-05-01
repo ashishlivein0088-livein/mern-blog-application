@@ -1,9 +1,14 @@
 pipeline{
     agent any
     stages{
-      stage('Checkout') {
+      stage('Install dependencies') {
             steps {
-                checkout scm
+                dir('frontend') {
+                    sh 'npm ci'
+                }
+                dir('backend'){
+                    sh 'npm ci'
+                }
             }
         }
     }
