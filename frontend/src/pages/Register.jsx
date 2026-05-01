@@ -36,7 +36,8 @@ const Register = () => {
     }
 
     try {
-      const { confirmPassword, ...registerData } = formData;
+      // eslint-disable-next-line no-unused-vars
+      const { confirmPassword: _confirmPassword, ...registerData } = formData;
       const response = await authAPI.register(registerData);
       login(response.data.user, response.data.token);
       navigate('/');

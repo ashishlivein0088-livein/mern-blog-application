@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { blogAPI } from '../services/api';
 import './BlogForm.css';
@@ -17,11 +17,7 @@ const EditBlog = () => {
   const [fetchingBlog, setFetchingBlog] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    fetchBlog();
-  }, [id]);
-
-  const fetchBlog = async () => {
+  const fetchBlog = useCallback(async () => {
     try {
       const response = await blogAPI.getBlogById(id);
       const blog = response.data.blog;
@@ -31,13 +27,18 @@ const EditBlog = () => {
         excerpt: blog.excerpt || '',
         tags: blog.tags ? blog.tags.join(', ') : ''
       });
+      setError('');
     } catch (err) {
-      setError('Failed to fetch blog. You may not have permission to edit it.');
+      setError('Failed to fetch blog. It may have been deleted.');
       console.error('Error fetching blog:', err);
     } finally {
       setFetchingBlog(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchBlog();
+  }, [fetchBlog]);
 
   const handleChange = (e) => {
     setFormData({

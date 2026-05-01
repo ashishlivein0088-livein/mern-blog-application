@@ -63,7 +63,7 @@ const MyBlogs = () => {
 
       {blogs.length === 0 ? (
         <div className="no-blogs">
-          <h2>You haven't created any blogs yet</h2>
+          <h2>You haven&apos;t created any blogs yet</h2>
           <p>Start sharing your thoughts with the world!</p>
           <Link to="/create" className="btn btn-primary mt-2">Write Your First Blog</Link>
         </div>

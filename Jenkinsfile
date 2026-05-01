@@ -8,9 +8,11 @@ pipeline{
     stages{
         stage('Install Dependencies') {
             steps {
+                echo '============ Installing dependencies for backend... ============'
                 dir('backend') {
                     sh 'npm ci'
                 }
+                echo '============ Installing dependencies for frontend... ============'
                 dir('frontend') {
                     sh 'npm ci'
                 }
@@ -18,19 +20,23 @@ pipeline{
         }
         stage('Lint') {
             steps {
+                echo '============ Running linting for backend... ============'
                 dir('backend') {
                     sh 'npm run lint'
                 }
-                dir('frontend') {
+                echo '============ Running linting for frontend... ============'
+                dir('frontend') {       
                     sh 'npm run lint'
                 }
             }
         }
         stage('Test') {
             steps {
+                echo '============ Running tests for backend... ============'
                 dir('backend') {
                     sh 'npm test'
                 }
+                echo '============ Running tests for frontend... ============'
                 dir('frontend') {
                     sh 'npm test'
                 }
@@ -38,9 +44,11 @@ pipeline{
         }
         stage('Unit Tests') {
             steps {
+                echo '============ Running unit tests for backend... ============'
                 dir('backend') {
                     sh 'npm test'
                 }
+                echo '============ Running unit tests for frontend... ============'
                 dir('frontend') {
                     sh 'npm test -- --watchAll=false'
                 }
@@ -48,6 +56,7 @@ pipeline{
         }
         stage('Build Frontend') {
             steps {
+                echo '============ Building frontend... ============'
                 dir('frontend') {
                     sh 'npm run build'
                 }
@@ -55,6 +64,7 @@ pipeline{
         }
         stage('Security Scan') {
             steps {
+                echo '============ Running security scan for backend... ============'
                 dir('backend') {
                     sh 'npm audit --audit-level=high'
                 }
@@ -62,6 +72,7 @@ pipeline{
         }
         stage('Package') {
             steps {
+                echo '============ Packaging application... ============'
                 sh 'tar -czf app.tar.gz backend frontend'
             }
         }

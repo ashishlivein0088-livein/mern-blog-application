@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { blogAPI } from '../services/api';
 import BlogCard from '../components/BlogCard';
 import './Home.css';
@@ -9,8 +8,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBlogs();

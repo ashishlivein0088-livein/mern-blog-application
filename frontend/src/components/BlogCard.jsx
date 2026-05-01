@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './BlogCard.css';
 
 const BlogCard = ({ blog }) => {
@@ -34,6 +35,19 @@ const BlogCard = ({ blog }) => {
       </Link>
     </div>
   );
+};
+
+BlogCard.propTypes = {
+  blog: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    excerpt: PropTypes.string,
+    author: PropTypes.shape({
+      username: PropTypes.string
+    }),
+    createdAt: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string)
+  }).isRequired
 };
 
 export default BlogCard;
