@@ -1,0 +1,13 @@
+# Ignore Terraform state files and folder
+.terraform/
+*.terraform.lock.hcl
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Ignore Ansible inventory file
+inventory.ini
+
+#  Ignore Private key files
+id_ed25519

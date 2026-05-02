@@ -1,0 +1,16 @@
+---
+- name: Test Ansible Playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ping all hosts
+      ansible.builtin.ping:
+    
+    - name: Deleting a file on the Jenkins server if exists  
+      ansible.builtin.file:
+        path: /tmp/jenkins_test_file.txt
+        state: absent
+        
+
+        
